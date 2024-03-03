@@ -5,6 +5,9 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
+import Icons from 'unplugin-icons/vite';
+import IconsResolver from 'unplugin-icons/resolver';
+import { FileSystemIconLoader } from 'unplugin-icons/loaders';
 
 export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   // 获取当前工作目录
@@ -32,20 +35,31 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
           enabled: true,
         },
         // 自定义组件的解析器
-        // resolvers: [ElementPlusResolver(), IconsResolver()],
+        // resolvers: [],
         // 配置文件生成位置
         dts: fileURLToPath(new URL('./types/auto-imports.d.ts', import.meta.url)),
       }),
       // 自动注册组件
       Components({
         // 自定义组件的解析器
-        // resolvers: [ElementPlusResolver(), IconsResolver()],
+        resolvers: [IconsResolver({ prefix: 'icon', customCollections: ['custom'] })],
         // 有效的文件扩展名
         extensions: ['vue'],
         // 配置文件生成位置
         dts: fileURLToPath(new URL('./types/components.d.ts', import.meta.url)),
         // 指定需要自动导入的组件位置，默认是src/components
         dirs: [fileURLToPath(new URL('./src/components/auto', import.meta.url))],
+      }),
+      Icons({
+        // scale: 1, // 缩放
+        compiler: 'vue3', // 编译方式
+        // defaultClass: '', // 默认类名
+        // defaultStyle: '', // 默认样式
+        autoInstall: true,
+        customCollections: {
+          custom: FileSystemIconLoader('./src/assets/icons'),
+        },
+        // jsx: 'react' // jsx支持
       }),
     ],
     // 运行后本地预览的服务器
