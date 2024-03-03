@@ -1,5 +1,5 @@
 <template>
-  <div class="home">home</div>
+  <div class="home" @click="handleCount">{{ count }}</div>
   <!-- 自定义组件 -->
   <a-button></a-button>
   <!-- iconify 图标 -->
@@ -9,7 +9,12 @@
   <icon-custom-emoji-boy />
 </template>
 
-<script setup></script>
+<script setup>
+const count = ref(0);
+const handleCount = () => {
+  count.value++;
+};
+</script>
 
 <style lang="less" scoped>
 .home {

@@ -1,9 +1,10 @@
 import axios, { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 
 const service = axios.create({
-  baseURL: './',
+  baseURL: import.meta.env.VITE_APP_API_BASEURL,
   timeout: 10000,
 });
+
 // axios实例拦截请求
 service.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
@@ -13,6 +14,7 @@ service.interceptors.request.use(
     return Promise.reject(error);
   },
 );
+
 // axios实例拦截响应
 service.interceptors.response.use(
   (response: AxiosResponse) => {
@@ -27,7 +29,7 @@ service.interceptors.response.use(
     return response;
   },
   // 请求失败
-  (error) => {
+  (error: AxiosError) => {
     const { response } = error;
     if (response) {
       return Promise.reject(response.data);
