@@ -51,21 +51,17 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         dirs: [fileURLToPath(new URL('./src/components/auto', import.meta.url))],
       }),
       Icons({
-        // scale: 1, // 缩放
-        compiler: 'vue3', // 编译方式
-        // defaultClass: '', // 默认类名
-        // defaultStyle: '', // 默认样式
+        // 编译方式
+        compiler: 'vue3',
         autoInstall: true,
+        // 指定图标加载器
         customCollections: {
-          custom: FileSystemIconLoader('./src/assets/icons'),
+          custom: FileSystemIconLoader('./src/assets/svg'),
         },
-        // jsx: 'react' // jsx支持
       }),
     ],
     // 运行后本地预览的服务器
     server: {
-      // 是否开启https
-      //   https: false,
       // 指定服务器应该监听哪个 IP 地址。 如果将此设置为 0.0.0.0 或者 true 将监听所有地址，包括局域网和公网地址。
       host: true,
       // 开发环境预览服务器端口
@@ -93,26 +89,11 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       sourcemap: false,
       // 打包大小超出 400kb 提示警告
       chunkSizeWarningLimit: 400,
-      rollupOptions: {
-        // 打包入口文件 根目录下的 index.html
-        // 也就是项目从哪个文件开始打包
-        input: {
-          index: fileURLToPath(new URL('./index.html', import.meta.url)),
-        },
-        // 静态资源分类打包
-        output: {
-          format: 'esm',
-          chunkFileNames: 'static/js/[name]-[hash].js',
-          entryFileNames: 'static/js/[name]-[hash].js',
-          assetFileNames: 'static/[ext]/[name]-[hash].[ext]',
-        },
-      },
     },
     // 配置别名
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
-        '#': fileURLToPath(new URL('./types', import.meta.url)),
       },
     },
   };

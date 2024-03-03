@@ -19,11 +19,7 @@
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
-    "@iconify-json/carbon": "^1.1.30",
     "@iconify-json/ep": "^1.1.14",
-    "@iconify-json/material-symbols": "^1.1.73",
-    "@iconify-json/mdi": "^1.1.64",
-    "@iconify-json/mi": "^1.1.8",
     "@iconify-json/twemoji": "^1.1.15",
     "@types/node": "^20.11.24",
     "@types/nprogress": "^0.2.3",

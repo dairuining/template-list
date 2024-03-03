@@ -22,21 +22,9 @@ dependencies:
     version: 4.3.0(vue@3.4.21)
 
 devDependencies:
-  '@iconify-json/carbon':
-    specifier: ^1.1.30
-    version: 1.1.30
   '@iconify-json/ep':
     specifier: ^1.1.14
     version: 1.1.14
-  '@iconify-json/material-symbols':
-    specifier: ^1.1.73
-    version: 1.1.73
-  '@iconify-json/mdi':
-    specifier: ^1.1.64
-    version: 1.1.64
-  '@iconify-json/mi':
-    specifier: ^1.1.8
-    version: 1.1.8
   '@iconify-json/twemoji':
     specifier: ^1.1.15
     version: 1.1.15
@@ -674,32 +662,8 @@ packages:
     resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==}
     dev: true
 
-  /@iconify-json/carbon@1.1.30:
-    resolution: {integrity: sha512-tEvEmxCO0J0t0p2NT2IvJ+iiSNqqnabygSo/S8wkeh2Guhc4tQOgl9dxvDMpy6RqwtKRTKsaROPtnRfu/bl+Tg==}
-    dependencies:
-      '@iconify/types': 2.0.0
-    dev: true
-
   /@iconify-json/ep@1.1.14:
     resolution: {integrity: sha512-F5tuycil4mEYNLtKcHRcPVOFOiN9nT+9wjTSUm27aIH/ylrKEoZWmB6sBXSLa1IUvsqPOlWXgz3ohISzknSQ5A==}
-    dependencies:
-      '@iconify/types': 2.0.0
-    dev: true
-
-  /@iconify-json/material-symbols@1.1.73:
-    resolution: {integrity: sha512-3ioEMQvxUR0eWg3jCxeydowS7xlqJzUHqeKJg29Z5HN15ZBYniQhHYrDCRpmFjopgwxox9OIsoonBiBSLV4EMA==}
-    dependencies:
-      '@iconify/types': 2.0.0
-    dev: true
-
-  /@iconify-json/mdi@1.1.64:
-    resolution: {integrity: sha512-zGeo5TjhNFAY6FmSDBLAzDO811t77r6v/mDi7CAL9w5eXqKez6bIjk8R9AL/RHIeq44ALP4Ozr4lMqFTkHr7ug==}
-    dependencies:
-      '@iconify/types': 2.0.0
-    dev: true
-
-  /@iconify-json/mi@1.1.8:
-    resolution: {integrity: sha512-DGoHbf4nkyrHNOAbbNncK1hiiYo/hk/IpdEGZ+eZJpOfWV2VypeaTaQt69pldDgQU+QDyc/GgmO4c0yIwQRfnQ==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true
