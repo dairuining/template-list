@@ -3,6 +3,8 @@ import type { UserConfig, ConfigEnv } from 'vite';
 import { fileURLToPath } from 'url';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
 
 export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   // 获取当前工作目录
@@ -10,7 +12,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   // 获取环境变量
   const env = loadEnv(mode, root);
   return {
-    // 项目根目录 
+    // 项目根目录
     root,
     // 项目部署的基础路径
     base: './',
@@ -21,11 +23,35 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       vue(),
       // jsx文件编译插件
       vueJsx(),
+      // 自动导入组件
+      AutoImport({
+        // 定义需要自动引入的框架
+        imports: ['vue', 'vue-router', 'pinia'],
+        // 处理eslint
+        eslintrc: {
+          enabled: true,
+        },
+        // 自定义组件的解析器
+        // resolvers: [ElementPlusResolver(), IconsResolver()],
+        // 配置文件生成位置
+        dts: fileURLToPath(new URL('./types/auto-imports.d.ts', import.meta.url)),
+      }),
+      // 自动注册组件
+      Components({
+        // 自定义组件的解析器
+        // resolvers: [ElementPlusResolver(), IconsResolver()],
+        // 有效的文件扩展名
+        extensions: ['vue'],
+        // 配置文件生成位置
+        dts: fileURLToPath(new URL('./types/components.d.ts', import.meta.url)),
+        // 指定需要自动导入的组件位置，默认是src/components
+        dirs: [fileURLToPath(new URL('./src/components/auto', import.meta.url))],
+      }),
     ],
     // 运行后本地预览的服务器
     server: {
       // 是否开启https
-        //   https: false,
+      //   https: false,
       // 指定服务器应该监听哪个 IP 地址。 如果将此设置为 0.0.0.0 或者 true 将监听所有地址，包括局域网和公网地址。
       host: true,
       // 开发环境预览服务器端口

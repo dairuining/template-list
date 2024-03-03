@@ -12,6 +12,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:vue/vue3-essential',
     'plugin:prettier/recommended',
+    './.eslintrc-auto-import.json',
   ],
   parserOptions: {
     ecmaVersion: 'latest',
@@ -25,6 +26,11 @@ module.exports = {
     /** 允许使用requires */
     '@typescript-eslint/no-var-requires': 0,
     /** 允许单个单词的组件名称 */
-    'multi-word-component-names': 0,
+    'vue/multi-word-component-names': [
+      'error',
+      {
+        ignores: ['index', 'Header', 'tag', 'Tag'], //需要忽略的组件名
+      },
+    ],
   },
 };
